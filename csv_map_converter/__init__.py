@@ -1,6 +1,6 @@
 
 #import csv
-from .Converter import Converter
+from .converter import Converter
 
 converter = Converter()
 

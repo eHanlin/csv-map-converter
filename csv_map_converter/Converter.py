@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 
-from .parsers.CsvMapParser import CsvMapParser
+from .parsers.parser import CsvMapParser
 
 class Converter(object):
     """

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 
-from .CsvMapResult import CsvMapResult
+from .result import CsvMapResult
 
 class CsvMapParser(object):
     """
