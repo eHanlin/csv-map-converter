@@ -5,6 +5,11 @@ csv_map_converter
 
 It's able to convert csv data when you need get model from csv.
 
+## Install
+
+```sh
+pip install csv-map-converter
+```
 
 ## Usage
 
@@ -30,6 +35,12 @@ rows = [row for row in csv.reader(csv_data)]
 result = csv_map_converter.convert(rows, User)
 
 print(result.models)
+```
+
+## Test
+
+```sh
+tox
 ```
 
 
