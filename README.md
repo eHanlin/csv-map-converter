@@ -20,7 +20,7 @@ class User():
     password = StringField()
 
 
-csv_data = io.StringIO("""enabled, account, password
+csv_data = io.StringIO(u"""enabled, account, password
 1,tomcat,1234
 0,apache,1234
 """)
