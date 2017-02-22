@@ -13,7 +13,7 @@ class ListField(Field):
 
     def to_python(self, values):
         if values:
-            return [subfield.to_python(value) for value in values]
+            return [self.__subfield.to_python(value) for value in values]
         return None
 
 class BooleanField(Field):
