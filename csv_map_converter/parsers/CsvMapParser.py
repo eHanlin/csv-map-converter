@@ -3,9 +3,9 @@
 from .CsvMapResult import CsvMapResult
 
 class CsvMapParser(object):
-    '''
+    """
     It is a csv parser which is able to convert csv lines to map of titles and values.
-    '''
+    """
 
     def __init__(self): pass
 
@@ -49,10 +49,11 @@ class CsvMapParser(object):
             row_data[title_name] = current_cell_data
 
     def parse(self, lines, start_row = 1, title_row = 0):
-        '''
+        """
         Parse csv lines.
         It will return title mapping result.
-        '''
+        """
+
         result = list()
         row_count = len(lines)
         title_line = lines[title_row]

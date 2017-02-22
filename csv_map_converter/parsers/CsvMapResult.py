@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*- 
 
 class CsvMapResult(object):
-    '''
+    """
     It is csv result which call csv map parser.
-    '''
+    """
 
     def __init__(self, titles, data, title_mapping):
         self.__titles = titles
@@ -11,15 +11,15 @@ class CsvMapResult(object):
         self.__title_mapping = title_mapping
 
     def get_titles(self):
-        '''
+        """
         Get titles.
-        '''
+        """
         return self.__titles
 
     def get_title_by_index(self, index):
-        '''
+        """
         Get title by original csv index.
-        '''
+        """
         return self.__title_mapping.get(index)
 
     def get_indexes_by_title(self, title):
@@ -32,8 +32,8 @@ class CsvMapResult(object):
         return indexes
 
     def get_data(self):
-        '''
+        """
         Get a dict array from title mapping.
-        '''
+        """
         return self.__data
 
