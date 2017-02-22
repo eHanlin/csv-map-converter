@@ -11,6 +11,6 @@ setup(name='csv-map-converter',
       author_email='sparrow.jang@gmail.com',
       url='https://github.com/eHanlin/csv-map-converter',
       packages=find_packages(),
-      test_suite = 'tests.test_converter',
+      test_suite = 'tests',
      )
 
