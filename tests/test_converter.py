@@ -37,7 +37,8 @@ class TestConverter(unittest.TestCase):
 
     def test_convert(self):
         start_data_row = self.start_data_row
-        csv_map_result = csv_map_converter.convert(self.csv_lines, start_row = start_data_row)
+        convert_result = csv_map_converter.convert(self.csv_lines, start_row = start_data_row)
+        csv_map_result = convert_result.map_result
         data = csv_map_result.get_data()
 
         for index, row in enumerate(data):
