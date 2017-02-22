@@ -1,4 +1,6 @@
 
+import sys
+
 class Field():
 
     def to_python(self, value):
@@ -30,7 +32,10 @@ class LongField(Field):
 
     def to_python(self, value):
         if value:
-            return long(value)
+            if sys.version_info.major > 2:
+                return int(value)
+            else:
+                return long(value)
         return None
 
 class IntField(Field):

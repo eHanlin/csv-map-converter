@@ -18,9 +18,15 @@ class TestField(unittest.TestCase):
 
     def test_long_field(self):
         long_field = LongField()
-        self.assertEqual(long_field.to_python('1'), long(1))
-        self.assertEqual(long_field.to_python('0'), long(0))
-        self.assertEqual(long_field.to_python('-1'), long(-1))
+
+        if sys.version_info.major > 2:
+            number = int
+        else:
+            number = long
+
+        self.assertEqual(long_field.to_python('1'), number(1))
+        self.assertEqual(long_field.to_python('0'), number(0))
+        self.assertEqual(long_field.to_python('-1'), number(-1))
 
     def test_int_field(self):
         int_field = IntField()
