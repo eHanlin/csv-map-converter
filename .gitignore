@@ -4,3 +4,4 @@
 __pycache__
 .tox
 csv_map_converter.egg-info
+dist
