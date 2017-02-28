@@ -2,6 +2,7 @@
 
 from .parsers.parser import CsvMapParser
 from .models.fields.base import ListField
+from .models.fields import FIELD_LIST
 
 class ConvertResult(object):
 
@@ -26,16 +27,29 @@ class Converter(object):
     def __init__(self):
         self.__csv_map_parser = CsvMapParser()
 
+    def __get_all_dict_of_model_field(self, Model):
+        field_dict = dict()
+
+        for attr_name in dir(Model):
+            field = getattr(Model, attr_name)
+            if field.__class__ in FIELD_LIST:
+                if field.name:
+                    field_dict[field.name] = field
+                else:
+                    field_dict[attr_name] = field
+        return field_dict
+
     def __convert_parsing_result_to_models(self, csv_map_result, Model):
         titles = csv_map_result.get_titles()
         data_rows = csv_map_result.get_data()
+        model_mapping_dict = self.__get_all_dict_of_model_field(Model)
         models = []
 
         for data_row in data_rows:
             model = Model()
             for title in titles:
-                if hasattr(Model, title):
-                    field = getattr(Model, title)
+                field = model_mapping_dict.get(title)
+                if field:
                     cell_data = data_row.get(title)
 
                     if not(isinstance(field, ListField)) and len(cell_data): cell_data = cell_data[0]
