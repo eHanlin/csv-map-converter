@@ -11,6 +11,8 @@ class Product(object):
     name    = StringField()
     price   = IntField()
     labels  = ListField(StringField())
+    label  = ListField(StringField(), name = 'label')
+
 
 class TestConverterModel(unittest.TestCase):
 
@@ -37,7 +39,17 @@ class TestConverterModel(unittest.TestCase):
                 expected = expected_row.get(title)
                 self.assertEqual(field_value, expected)
                 if isinstance(expected, list):
-                    self.assertEqual(len(field_value), len(expected))
+                    self.assertEqual(field_value, expected)
+
+    def test_convert_model_by_name_attr(self):
+        csv_lines = list(self.csv_lines)
+        csv_lines[0][3] = 'label'
+        convert_result = csv_map_converter.convert(csv_lines, Product)
+
+        for index, model in enumerate(convert_result.models):
+            expected_row = self.expected_rows[index]
+            expected = expected_row.get('labels')
+            self.assertEqual(model.label, expected)
 
 if __name__ == '__main__':
     unittest.main()
