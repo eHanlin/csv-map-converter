@@ -5,7 +5,7 @@ except:
     from distutils.core import setup, find_packages
 
 setup(name='csv-map-converter',
-      version='1.0.0',
+      version='1.1.0',
       description='It is csv converter to be able to get multi-values.',
       author='Sparrow Jang',
       author_email='sparrow.jang@gmail.com',
