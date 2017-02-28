@@ -3,12 +3,21 @@ import sys
 
 class Field():
 
+    def __init__(self, name = None):
+        self.__name = name
+
+    @property
+    def name(self):
+        return self.__name
+
     def to_python(self, value):
         return value
 
 class ListField(Field):
 
-    def __init__(self, subfield = Field()):
+    def __init__(self, subfield = Field(), name = None):
+        #super(ListField, self).__init__(name = name)
+        Field.__init__(self, name = name)
         self.__subfield = subfield
 
     def to_python(self, values):
