@@ -31,7 +31,7 @@ class CsvMapResult(object):
 
         return indexes
 
-    def get_data(self):
+    def get_content(self):
         """
         Get a dict array from title mapping.
         """

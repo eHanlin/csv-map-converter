@@ -41,7 +41,7 @@ class Converter(object):
 
     def __convert_parsing_result_to_models(self, csv_map_result, Model):
         titles = csv_map_result.get_titles()
-        data_rows = csv_map_result.get_data()
+        data_rows = csv_map_result.get_content()
         model_mapping_dict = self.__get_all_dict_of_model_field(Model)
         models = []
 
