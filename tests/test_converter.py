@@ -35,9 +35,8 @@ class TestConverter(unittest.TestCase):
 
         return list(filter(lambda val: val, [row_data[index] for index in indexes]))
 
-    def test_convert(self):
-        start_data_row = self.start_data_row
-        convert_result = csv_map_converter.convert(self.csv_lines, start_row = start_data_row)
+    def test_convert_list_field(self):
+        convert_result = csv_map_converter.convert(self.csv_lines, start_row = self.start_data_row)
         csv_map_result = convert_result.map_result
         data = csv_map_result.get_data()
 
@@ -46,7 +45,16 @@ class TestConverter(unittest.TestCase):
             emails = self.__get_emails_by_index(index, csv_map_result)
             for email in emails: self.assertTrue(email in convert_emails)
 
+    def test_parse_content(self):
+        start_data_row = self.start_data_row
+        convert_result = csv_map_converter.convert(self.csv_lines, start_row = start_data_row)
+        csv_map_result = convert_result.map_result
+        data = csv_map_result.get_data()
         self.assertEqual(len(self.csv_lines[start_data_row:]), len(data))
+
+    def test_parse_titles(self):
+        convert_result = csv_map_converter.convert(self.csv_lines, start_row = self.start_data_row)
+        csv_map_result = convert_result.map_result
         self.assertEqual(csv_map_result.get_titles(), self.__get_titles())
 
 if __name__ == '__main__':
