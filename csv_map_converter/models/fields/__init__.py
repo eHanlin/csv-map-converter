@@ -1,4 +1,4 @@
-from .base import *
 
-FIELD_LIST = [Field, ListField, BooleanField, StringField, LongField, IntField, FloatField]
+from .base import *
+from .model_descriptor import *
 
