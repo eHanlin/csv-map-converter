@@ -12,6 +12,7 @@ class Product(object):
     price   = IntField()
     labels  = ListField(StringField())
     label  = ListField(StringField(), name = 'label')
+    location = StringField(default = "taipei")
 
 
 class TestConverterModel(unittest.TestCase):
@@ -19,13 +20,13 @@ class TestConverterModel(unittest.TestCase):
 
     def setUp(self):
         self.csv_lines = [
-            ['enabled', 'name', 'price', 'labels', '', '', ''],
-            ['1', 'office', '4000', '2017', 'mircrosoft', '', ''],
-            ['0', 'dreamweaver', '8000', '2008', 'adobe', 'web', 'browser'],
+            ['enabled', 'name', 'price', 'labels', '', '', '', 'location'],
+            ['1', 'office', '4000', '2017', 'mircrosoft', '', '', 'kaohsiung'],
+            ['0', 'dreamweaver', '8000', '2008', 'adobe', 'web', 'browser', ''],
         ]
         self.expected_rows = [
-            dict(enabled = True, name = 'office', price = 4000, labels = ['2017', 'mircrosoft']),
-            dict(enabled = False, name = 'dreamweaver', price = 8000, labels = ['2008', 'adobe', 'web', 'browser']),
+            dict(enabled = True, name = 'office', price = 4000, labels = ['2017', 'mircrosoft'], location = 'kaohsiung'),
+            dict(enabled = False, name = 'dreamweaver', price = 8000, labels = ['2008', 'adobe', 'web', 'browser'], location = 'taipei'),
         ]
 
     def test_convert_model(self):
