@@ -3,8 +3,13 @@ import sys
 
 class Field():
 
-    def __init__(self, name = None):
+    def __init__(self, name = None, default = None):
         self.__name = name
+        self.__default = default
+
+    @property
+    def default(self):
+        return self.__default
 
     @property
     def name(self):
@@ -15,9 +20,9 @@ class Field():
 
 class ListField(Field):
 
-    def __init__(self, subfield = Field(), name = None):
+    def __init__(self, subfield = Field(), name = None, default = None):
         #super(ListField, self).__init__(name = name)
-        Field.__init__(self, name = name)
+        Field.__init__(self, name = name, default = default)
         self.__subfield = subfield
 
     def to_python(self, values):

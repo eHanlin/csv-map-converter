@@ -40,9 +40,11 @@ class Converter(object):
                 if field:
                     cell_data = data_row.get(title)
 
-                    if not(isinstance(field, ListField)) and len(cell_data): cell_data = cell_data[0]
+                    if not(isinstance(field, ListField)) and cell_data and len(cell_data): cell_data = cell_data[0]
                     
-                    field_value = field.to_python(cell_data)
+                    if not(cell_data) and field.default: field_value = field.default
+                    else: field_value = field.to_python(cell_data)
+
                     setattr(model, title, field_value)
 
             models.append(model)
