@@ -45,7 +45,8 @@ class Converter(object):
                     if not(cell_data) and field.default: field_value = field.default
                     else: field_value = field.to_python(cell_data)
 
-                    setattr(model, title, field_value)
+                    #setattr(model, title, field_value)
+                    model_descriptor.set(model, title, field_value)
 
             models.append(model)
 

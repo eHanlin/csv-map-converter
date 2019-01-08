@@ -11,7 +11,7 @@ class Product(object):
     name    = StringField()
     price   = IntField()
     labels  = ListField(StringField())
-    label  = ListField(StringField(), name = 'label')
+    label  = ListField(StringField(), name = 'labels')
     location = StringField(default = "taipei")
 
 
@@ -44,7 +44,7 @@ class TestConverterModel(unittest.TestCase):
 
     def test_convert_model_by_name_attr(self):
         csv_lines = list(self.csv_lines)
-        csv_lines[0][3] = 'label'
+        #csv_lines[0][3] = 'label'
         convert_result = csv_map_converter.convert(csv_lines, Product)
 
         for index, model in enumerate(convert_result.models):
