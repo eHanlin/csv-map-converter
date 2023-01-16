@@ -35,7 +35,8 @@ class BooleanField(Field):
     def to_python(self, value):
         if value:
             value = value.lower()
-            if not(value in ["0", "false"]): return True
+            #if not(value in ["0", "false"]): return True
+            if value in ["1", "true"]: return True
 
         return False
             
